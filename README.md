@@ -1,3 +1,3 @@
 # KripzysTwitterUtilities
 
-Basic Utilities I use to manage my twitter giveaway bots, I havent bothered to create a fancy gui for any of these tools because I generally just mass run them with a batch file to speed up the process.
+Basic utilities I use to manage my twitter giveaway bots, I havent bothered to create a fancy gui for any of these tools because I generally just mass run them with a batch file to speed up the process.
