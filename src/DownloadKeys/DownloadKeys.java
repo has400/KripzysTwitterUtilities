@@ -21,7 +21,7 @@ import javax.swing.JFrame;
 
 import twitter4j.Twitter;
 
-public class mainClass {
+public class DownloadKeys {
 
 	public JFrame frame;
 
@@ -48,7 +48,7 @@ public class mainClass {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						mainClass window = new mainClass();
+						DownloadKeys window = new DownloadKeys();
 						window.frame.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -133,7 +133,7 @@ public class mainClass {
 		System.out.println("Done.");
 	}
 
-	public mainClass() throws IOException {
+	public DownloadKeys() throws IOException {
 		initialize();
 	}
 

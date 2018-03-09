@@ -35,11 +35,10 @@ public class KripzyTwitterBotGui {
 
 	static Twitter twitter;
 
-	static ArrayList<Long> DeniedTweets;
 	static FollowList followingList;
-
+	
 	static String filename = "config.txt";
-
+	static String inputOfButton;
 	static String path = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "KripTech"
 			+ File.separator + "TwitterContestBot";
 
@@ -69,8 +68,6 @@ public class KripzyTwitterBotGui {
 
 	}
 
-	static String inputOfButton;
-
 	private static void load(String input2) {
 
 		try {
@@ -94,67 +91,6 @@ public class KripzyTwitterBotGui {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private static void getNewKeys(String bot) {
-		String[] keys = getBot(bot.toLowerCase(), "kripzy", 3245);
-
-		Writer wr;
-		try {
-			wr = new FileWriter(path + File.separator + bot.toLowerCase() + File.separator + filename);
-
-			wr.write(keys[0]);
-			wr.write(System.getProperty("line.separator"));
-			wr.write(keys[1]);
-			wr.write(System.getProperty("line.separator"));
-			wr.write(keys[2]);
-			wr.write(System.getProperty("line.separator"));
-			wr.write(keys[3]);
-
-			wr.flush();
-			wr.close();
-
-		} catch (IOException e1) {
-		}
-	}
-	
-	private static String[] getBot(String bot, String botid, int PW) {
-		String https_url = "https://kripzy.com/getbot.php?botid=" + botid + bot + "&PW=" + PW;
-
-		URL url;
-
-		try {
-
-			url = new URL(https_url);
-			HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-
-			// dump all the content
-			return getBotText(con);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private static String[] getBotText(HttpsURLConnection con) {
-		if (con != null) {
-
-			try {
-				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-				String input;
-				while ((input = br.readLine()) != null) {
-					String[] keys = input.split("<br>");
-					return keys;
-				}
-				br.close();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
 	}
 
 	static List<Long> longIDList = new ArrayList<Long>();

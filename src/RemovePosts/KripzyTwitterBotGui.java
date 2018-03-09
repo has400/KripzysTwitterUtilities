@@ -48,9 +48,6 @@ public class KripzyTwitterBotGui {
 	private JFrame frame;
 
 	static Twitter twitter;
-	static RetweetedList retweetedList;
-	static ArrayList<Long> DeniedTweets;
-	static FollowList followingList;
 
 	static String filename = "config.txt";
 
@@ -61,7 +58,9 @@ public class KripzyTwitterBotGui {
 	static String ConsumerSecret = null;
 	static String AccessToken = null;
 	static String AccessSecret = null;
-static String zipfilename = "";
+	
+	static String zipfilename = "";
+	
 	public static void main(String[] args) throws InterruptedException, TwitterException {
 
 		if (args.length == 2) {
@@ -747,35 +746,5 @@ static String zipfilename = "";
 		imageIcon = new ImageIcon(image);
 
 		frame.setResizable(false);
-	}
-
-	public static QueryResult searchTweets(String queryTerm, int limit) throws InterruptedException, TwitterException {
-		QueryResult result = null;
-		Query query = null;
-		try {
-			query = new Query(queryTerm);
-			query.setCount(limit);
-			result = twitter.search(query);
-		} catch (TwitterException e) {
-			System.out.println("Error, Restart search.");
-		}
-
-		return result;
-
-	}
-
-	public static void getFollowing() {
-
-		try {
-			IDs ids = twitter.getFriendsIDs(twitter.getId(), -1);
-
-			for (int i = 0; i < ids.getIDs().length; i++) {
-				followingList.add(ids.getIDs()[i]);
-			}
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-
 	}
 }
